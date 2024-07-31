@@ -1,0 +1,33 @@
+{
+  "author": {
+    "name": "veto@myridia.com"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "exceljs": "^4.1.1",
+    "free-jqgrid": "^4.15.5",
+    "log2textarea": "^1.0.0"
+  },
+  "deprecated": false,
+  "description": "CSV download plugin for free-jqgrid:  https://www.npmjs.com/package/free-jqgrid",
+  "homepage": "http://calantas.org/jqgriddownload",
+  "keywords": [
+    "free-jqgrid",
+    "jqgrid",
+    "csv download",
+    "csv"
+  ],
+  "license": "GPL-3.0-or-later",
+  "main": "jqgriddownload",
+  "name": "jqgriddownload",
+  "repository": {
+    "type": "hg",
+    "url": "http://calantas.org/jqgriddownload"
+  },
+  "scripts": {
+    "build": "cat jqgriddownload.js > dist/jqgriddownload.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "unpkg": "jqgriddownload.js",
+  "version": "1.8.1"
+}

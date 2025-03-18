@@ -112,6 +112,7 @@
           }
           let col     = jQuery(this).jqGrid("getGridParam", "colModel");
           let caption = jQuery(this).jqGrid("getGridParam", "caption").replace(/[^a-zA-Z0-9]/g, "");
+	  let footerdata = jQuery(this).jqGrid("footerData", "get");
           let format = {};
           let formatoptions = {};
           let formatoptions_default = '';	    	    
@@ -122,12 +123,30 @@
 
 	  let rows    = [];
 	  let header  = [];
+          let footer  = Array.from({ length: col.length });
+          let ct = 0, footerVals =0;
 
             for(let c in col)
             {
               if(col[c]['name'] != 'rn' && col[c]['name'] != 'cb' && col[c]['name'] != 'subgrid')
               {
                 let name = col[c]['name'];
+    		if(footerdata[name]){
+                  let cellVal = footerdata[name]
+                  if (typeof cellVal === 'string' || cellVal instanceof String) // check if a string has a comma                                                                         
+                  {
+                    if(cellVal.indexOf(',') !== -1)
+                    {
+                      cellVal = '"' + cellVal + '"';
+                    }
+                  }
+                 footer[ct]= cellVal;
+                }
+                else
+                  footer[ct] = '';
+                ++ct;
+                if(footerdata[name])
+                  ++footerVals;
                 name = '"' + col[c]['label'] + '"';		      		  
                 if(col[c]['label'])
                 {
@@ -291,6 +310,8 @@
               }
               rows.push(row);
             }
+        if(footerVals >0)
+          rows.push(footer);
             let csv  = rows.map(e => e.join(separator)).join(endline);
             //console.log(csv);
 

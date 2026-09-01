@@ -1,3 +1,4 @@
+<img src="jqgriddownload.svg" alt="jqgriddownload" width="120">
 # jqgrid_download
 jqgrid_download is a convenient simple csv download plugin for the free-jqgrid.
 
